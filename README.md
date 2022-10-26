@@ -1,1 +1,10 @@
-# IoT-Project
+# Connected City
+The project is related to the traffic management in a smart city crossed by a river.
+The system developed is based on a multi-thread architecture.
+
+## Description
+Consider a city in which people and vehicles moving inside its borders shall be able to exchange information with the urban mobility infrastructure. The city is on the shores of an important river, crossed by multiple bridges since ancient times.
+In detail, each bridge Bi, i ∈ {1, . . . , NBRIDGE} is monitored by a CoAP- like process Pi that handles the traffic crossing Bi through two traffic lights at the two bridge sides, denoted as Li,1 and Li,2. At every instant, each bridge allows one-way traffic: the direction of the traffic is controlled by Li,1 and Li,2. Assuming that a green traffic light is associated with “1” and a red traffic light is associated with “0,” at each time {Li,1 = 1, Li,2 = 0} or {Li,1 = 0, Li,2 = 1}. Each process Pi, every T seconds, “swaps” the status of the traffic lights at the borders, so that when one traffic light allows vehicles to cross the bridge in one direction, the other one prevents vehicles at the other extreme of the bridge from crossing the bridge. So as, these traffic lights should listen for the decisions taken by Pi and react consequently (e.g., showing a message in the console, etc.).
+Each bridge Bi is then equipped with a vehicles counter Ci, which reports the total amount of vehicles that have crossed the bridge so far.
+Finally, these data (traffic lights status and counters) may be of interest for citizens, who can request the status of the traffic lights for a specific bridge in advance (in order to take decisions on the best route to be followed to go from one side of the city to their destination), and for the local police, who may be interested in knowing (i) how many vehicles crossed all the bridges in the city and (ii) if there was any vehicle which crossed a bridge with a red traffic light— this is possible since each vehicle, once reached a bridge, should send their own identifier VID before requiring for the bridge’s status.
+
