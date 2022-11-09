@@ -12,6 +12,6 @@ The server, via HTTP PUT requests, updates the state of the resources every T se
 To simulate a real scenario, the single client *vehicle* generates M threads which, thanks to the naming service offered by the server, randomly obtain a URI of a resource to connect with. <br/> <br/>
 In a first step, the client thread sends a HTTP POST request with it's ID to the resource and, depending on the status of it, either gets stuck or has a chance to cross the bridge; again, to simulate a real-world scenario in which vehicles may take a different amount of time to cross the bridge (i.e., the traffic flow on the bridge does not remain constant), the resource draws a random number of IDs from its queue and communicates these to the vehicles.
 
-<br /><br />
+<br />
 Through HTTP requests, the *police* client has the ability to obtain information about the total number of vehicles that have passed over the bridges and how many of them crossed with red light.<br />
 Finally, the *citizen* client, taking advantage of the same naming service offered by the server, receives the URI of the resource it wants to connect to and gets information about its status.
