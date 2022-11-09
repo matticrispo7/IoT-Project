@@ -1,5 +1,5 @@
 # Connected City
-This is a master's degree project of Distributed Systems developed in 2022. <br />
+This is a master's degree project of Internet of Things developed in 2022. <br />
 
 ## Description
 The project is related to the traffic management in a smart city crossed by a river. The *Californium* Java framework has been used.<br />
