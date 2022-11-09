@@ -1,10 +1,17 @@
 # Connected City
-The project is related to the traffic management in a smart city crossed by a river.
-The system developed is based on a multi-thread architecture.
+This is a master's degree project of Distributed Systems developed in 2022. <br />
 
 ## Description
-Consider a city in which people and vehicles moving inside its borders shall be able to exchange information with the urban mobility infrastructure. The city is on the shores of an important river, crossed by multiple bridges since ancient times.
-In detail, each bridge Bi, i ∈ {1, . . . , NBRIDGE} is monitored by a CoAP- like process Pi that handles the traffic crossing Bi through two traffic lights at the two bridge sides, denoted as Li,1 and Li,2. At every instant, each bridge allows one-way traffic: the direction of the traffic is controlled by Li,1 and Li,2. Assuming that a green traffic light is associated with “1” and a red traffic light is associated with “0,” at each time {Li,1 = 1, Li,2 = 0} or {Li,1 = 0, Li,2 = 1}. Each process Pi, every T seconds, “swaps” the status of the traffic lights at the borders, so that when one traffic light allows vehicles to cross the bridge in one direction, the other one prevents vehicles at the other extreme of the bridge from crossing the bridge. So as, these traffic lights should listen for the decisions taken by Pi and react consequently (e.g., showing a message in the console, etc.).
-Each bridge Bi is then equipped with a vehicles counter Ci, which reports the total amount of vehicles that have crossed the bridge so far.
-Finally, these data (traffic lights status and counters) may be of interest for citizens, who can request the status of the traffic lights for a specific bridge in advance (in order to take decisions on the best route to be followed to go from one side of the city to their destination), and for the local police, who may be interested in knowing (i) how many vehicles crossed all the bridges in the city and (ii) if there was any vehicle which crossed a bridge with a red traffic light— this is possible since each vehicle, once reached a bridge, should send their own identifier VID before requiring for the bridge’s status.
+The project is related to the traffic management in a smart city crossed by a river. The *Californium* Java framework has been used.
+For detailed information, read the documentation.
 
+## Architecture
+The developed system is based on a multi thread architecture with 3 main components: a single server, several clients (*vehicle*, *police* and *citizen*) and observable resources (*traffic light*).<br />
+Initially, the server registers the resources giving them a unique URI with the following structure:  tf*x_y* where *x* is the i-th bridge and *y*refers to the side of the bridge on which the traffic light is placed.<br />
+The server, via HTTP PUT requests, updates the state of the resources every T seconds, swapping them.<br />
+To simulate a real scenario, the single client *vehicle* generates M threads which, thanks to the naming service offered by the server, randomly obtain a URI of a resource to connect with. <br/> <br/>
+In a first step, the client thread sends a HTTP POST request with it's ID to the resource and, depending on the status of it, either gets stuck or has a chance to cross the bridge; again, to simulate a real-world scenario in which vehicles may take a different amount of time to cross the bridge (i.e., the traffic flow on the bridge does not remain constant), the resource draws a random number of IDs from its queue and communicates these to the vehicles.
+
+<br /><br />
+Through HTTP requests, the *police* client has the ability to obtain information about the total number of vehicles that have passed over the bridges and how many of them crossed with red light.<br />
+Finally, the *citizen* client, taking advantage of the same naming service offered by the server, receives the URI of the resource it wants to connect to and gets information about its status.
