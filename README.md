@@ -2,8 +2,8 @@
 This is a master's degree project of Distributed Systems developed in 2022. <br />
 
 ## Description
-The project is related to the traffic management in a smart city crossed by a river. The *Californium* Java framework has been used.
-For detailed information, read the documentation.
+The project is related to the traffic management in a smart city crossed by a river. The *Californium* Java framework has been used.<br />
+For detailed information, read the [documentation] (Assignment.pdf) .
 
 ## Architecture
 The developed system is based on a multi thread architecture with 3 main components: a single server, several clients (*vehicle*, *police* and *citizen*) and observable resources (*traffic light*).<br />
